@@ -1,0 +1,99 @@
+diff FILE1 FILE2                    show the different between files (Only in Linux)
+diff -u FILE1 FILE2                 show the different between files in unified detail format (Only in Linux)
+diff -u FILE1 FILE2 > NEWFILE.diff  new file will have the different between File1 and File2
+patch FILE1 < FILE2.diff	    patch the diff file to the File1
+
+
+git config --global user.name "NAME"
+git congig --global user.email "EMAIL"
+git config -l 
+
+git init
+git clone URL
+
+git add FILENAME                    Staging the file
+git add *                           Staging all file
+git commit -m MESSAGE               Commiting the message
+git commit -a -m MESSAGE            Both staging and commiting only for non new file
+git status			    give status
+git log                             Show all log for all commit
+git log -p                          Show with patch
+git show COMMITID                   Show log detail of given commitid
+git log --stat                      Show log details with some file changes
+git diff                            Show diff of the file changes  (equal like diff -u) and applicable for unstaged changes
+git add -p                          Show the changes and ask whether to commit or not
+git diff --staged		    Show the chnages but not commited
+git rm FILE		 	    remove the file from git directory
+git mv OLDFILE NEWFILE		    move the file
+git checkout FILE		    revert where the file before stage
+git reset HEAD FILENAME		    revert where the file after stage but not commited 
+git commit --amend		    append git last commit message with new message  (Applicable for local Git)
+git revert HEAD  		    revert back to last changes with new commitid
+git revert COMMITID                 revert back to specified commit
+git branch			    show all the branch in current repository
+git branch BRANCHNAME			    create a new branch
+git checkout BRANCHNAME             shift to that branch
+git checkout -b BRANCHNAME	    create and shift to that branch
+git branch -d BRANCHNAME	    delete the branch (Applicabel for no file in that branch)
+git branch -D BRANCHNAME	    delete the branch forcefully (Even have file and not merge with master)
+git merge BRANCHNAME		    merge the BRANCHNAME to current branch
+
+Trivia:
+	Merge are two ways 
+	1.Fast-forward  	
+			        o CommitID of side branch               o CommitID of side branch              
+                               /					|
+                              o CommitID of master       ----->         o CommitID of master
+			      |						|
+                              o CommitID of master			o CommitID of master
+			      |						|
+                              o CommitID of master			o CommitID of master
+	2. Three ways merge
+			      o CommitID of master
+			      |\
+			      | o CommitID of side branch
+			      |/	
+			      o CommitID of master          
+			      |				  
+ 			      o CommitID of master
+
+git log --graph --oneline	     show the log in graph format with one line detail
+git merge --abort		     abort the merge process
+git push			     push the code to remote
+git remote -v 			     show the origin of the remote repository
+git remote show origin		     information about origin branch
+git branch -r 			     show the remote branch which is tracking to fetch and push
+git fetch		             download the code from remote but not update in local
+git merge origin/master		     merge the code with local where it is fetched
+git pull			     doanload and merge automatically in local if no conflict
+git log origin/master		     show log with both remote and local
+git checkout BRANCHNAME		     created the branch by fetching from remote and shift to that branch
+git push			     push the code to remote origin
+git push -u origin BRANCHNAME	     upstream the code to remote branch
+git rebase BRANCHNAME		     like merge, but will have fast forward commit instead of three ways commit
+
+Trivia 
+1. git merge
+ 			      o master
+			      |\
+ 			      |o side branch1
+ 			      |o side branch2
+ 			      |o side branch3
+ 			      |/
+ 			      o master
+ 			      o master
+
+2. git rebase
+ 			      o side branch1
+ 			      o side branch2
+ 			      o side branch3
+ 			      o master
+ 			      o master
+
+git push --delete origin BRANCHNAME  remove the branch in remote
+git rebase -i BRANCHNAME             like merge, but will have fast forward commit instead of three ways commit. The interactive rebase process
+git push -f			     force to push in remote
+
+
+
+ 		      
